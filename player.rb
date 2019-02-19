@@ -1,8 +1,8 @@
 class Player
-    
+    attr_reader :name
     def initialize(name)
         @name = name
-        @hp = 3
+        @life = 3
         @ap = 1
     end
 
