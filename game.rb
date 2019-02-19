@@ -10,8 +10,15 @@ class Game
       
     end
 
+    def game_over? 
+        @players.any? {|player| player.no_life?}
+    end
+
+
+
     def run
-        puts "------------TURN#{@turn}--------------"
+       while !game_over?
+        puts "------------TURN #{@turn}--------------"
         current_p = @players.first
         oppose_p = @players[1]
         @qst  = Question.new()
@@ -24,11 +31,14 @@ class Game
                     current_p.life -= 1
             puts "#{current_p.name}: Seriously? No!"
                  end
-            puts "--------Current Health Status---------"
-            puts "P1: #{current_p.life}/3 vs P2: #{oppose_p.life}/3"
-        
-
-
-    
+           
+        puts
+             puts "--------Current Health Status---------"
+             puts "P1: #{current_p.life}/3 vs P2: #{oppose_p.life}/3"
+             
+            @turn += 1
+            sleep 0.7
+            @players.rotate!
+        end
     end
 end
