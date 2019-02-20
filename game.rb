@@ -22,6 +22,11 @@ class Game
         puts "#{loser.name} cannot do basic math"
     end 
 
+    def summary
+        puts
+        puts "--------Current Health Status---------"
+        puts "P1: #{@player1.life}/3 vs P2: #{@player2.life}/3"
+    end
 
 
     def run
@@ -40,10 +45,8 @@ class Game
             puts "#{current_p.name}: Seriously? No!"
                  end
            
-        puts
-             puts "--------Current Health Status---------"
-             puts "P1: #{current_p.life}/3 vs P2: #{oppose_p.life}/3"
-             
+       
+            summary
             @turn += 1
             sleep 0.7
             @players.rotate!
