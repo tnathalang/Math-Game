@@ -1,3 +1,4 @@
+
 require_relative './player'
 require_relative './question'
 
@@ -13,6 +14,13 @@ class Game
     def game_over? 
         @players.any? {|player| player.no_life?}
     end
+
+    def over
+        puts
+        puts "---------GAME OVER----------"
+        loser = @players.find { |player| player.no_life? }
+        puts "#{loser.name} cannot do basic math"
+    end 
 
 
 
@@ -39,6 +47,9 @@ class Game
             @turn += 1
             sleep 0.7
             @players.rotate!
+           
         end
+        over
     end
+
 end
